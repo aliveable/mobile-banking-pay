@@ -1,0 +1,10 @@
+import pip
+import plotly
+import IPython
+from plotly import __version__
+from plotly.offline import download_plotlyjs, init_notebook_mode, iplot
+print (__version__ )
+init_notebook_mode()
+
+
+iplot([{"x": [1, 2, 3], "y": [3, 1, 6]}])
