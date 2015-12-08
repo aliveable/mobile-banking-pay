@@ -1,0 +1,13 @@
+import pip
+import plotly
+import plotly.plotly as py
+import plotly.graph_objs as go
+
+fig = {
+    'data': [{'labels': ['Internet Banking', 'Mobile Banking'],
+              'values': [7892, 110],
+              'type': 'pie'}],
+    'layout': {'title': 'Internet Banking&Mobile Banking comparing 2010'}
+}
+
+url = py.plot(fig, filename='Pie Chart 2010')
