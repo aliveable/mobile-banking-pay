@@ -1,0 +1,32 @@
+import plotly.plotly as py
+import plotly.graph_objs as go
+
+year = ['2010', '2011', '2012', '2013', '2014']
+internetbanking = [4822947, 5626192, 6645161, 8033061, 9960419]
+mobilebanking = [519450, 706439, 864312, 1164796, 6229960]
+
+trace0 = go.Scatter(
+    x = year,
+    y = internetbanking,
+    name = 'internetbanking',
+    line = dict(
+        color = ('rgb(205, 12, 24)'),
+        width = 4)
+)
+trace1 = go.Scatter(
+    x = year,
+    y = mobilebanking,
+    name = 'mobilebanking',
+    line = dict(
+        color = ('rgb(22, 96, 167)'),
+        width = 4,)
+)
+
+data = [trace0, trace1]
+
+layout = dict(title = 'difference between internetbanking and mobile banking accounts',
+              yaxis = dict(title = 'number of accounts'),
+              )
+
+fig = dict(data=data, layout=layout)
+py.iplot(fig, filename='account')
