@@ -39,12 +39,12 @@ mobile_bank = [sum(mobilebanking53), sum(mobilebanking54), sum(mobilebanking55),
 
 trace1 = go.Scatter(x=types, y=internet_bank,
                     marker=dict(color='#0099ff'),
-                    name='Goals For<br>Per Game',
+                    name='internet Banking',
                     xaxis='x2', yaxis='y2')
 
 trace2 = go.Scatter(x=types, y=mobile_bank,
                     marker=dict(color='#404040'),
-                    name='Goals Against<br>Per Game',
+                    name='Mobile Banking',
                     xaxis='x2', yaxis='y2')
 
 figure['data'].extend([trace1, trace2])
