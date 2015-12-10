@@ -1,0 +1,42 @@
+import pip
+import plotly
+import plotly.plotly as py      
+import plotly.plotly as py
+import plotly.graph_objs as go
+
+
+trace1 = go.Bar(
+    x=['Statement Value (Jan)', 'Statement Value(Feb)',  'Statement Value(Mar)',  'Statement Value(Apr)'\
+       ,  'Statement Value(May)',  'Statement Value(Jun)',  'Statement Value(Jul)',  'Statement Value(Aug)'\
+       ,  'Statement Value(Sep)',  'Statement Value(Oct)',  'Statement Value(Nov)',  'Statement Value(Dec)'],
+    y=[716, 632, 781, 682, 739, 756, 742, 846, 772, 708, 644, 762],
+    name='Internet Banking 2011',
+    marker=dict(
+        color='rgb(205, 79, 57)'
+    )
+)
+trace2 = go.Bar(
+    x=['Statement Value (Jan)', 'Statement Value(Feb)',  'Statement Value(Mar)',  'Statement Value(Apr)'\
+       ,  'Statement Value(May)',  'Statement Value(Jun)',  'Statement Value(Jul)',  'Statement Value(Aug)'\
+       ,  'Statement Value(Sep)',  'Statement Value(Oct)',  'Statement Value(Nov)',  'Statement Value(Dec)'],
+    y=[12, 12, 14, 13, 14, 15, 16, 17, 19, 17, 17, 20],
+    name='Mobile Banking 2011',
+    marker=dict(
+        color='rgb(79, 148, 205)'
+    )
+)
+data = [trace1, trace2]
+layout = go.Layout(
+    title='Internet Banking&Mobile Banking comparing',
+    barmode='group',
+    yaxis=dict(
+        title='THB (Billions)',
+        titlefont=dict(
+            size=16,
+            color='rgb(107, 107, 107)'
+        )
+    )
+)
+    
+fig = go.Figure(data=data, layout=layout)
+plot_url = py.plot(fig, filename='bargraph2011')
