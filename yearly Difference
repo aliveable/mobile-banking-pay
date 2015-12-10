@@ -1,0 +1,57 @@
+import pip
+import plotly
+import plotly.plotly as py
+import plotly.graph_objs as go
+from plotly.tools import FigureFactory as FF 
+
+internetbanking53 = [551, 549, 674, 672, 666, 669, 668, 636, 683, 666, 708, 749]
+mobilebanking53 = [7, 8, 9, 8, 8, 9, 9, 10, 10, 11, 11, 11]
+internetbanking54 = [716, 632, 781, 682, 739, 756, 742, 846, 772, 708, 644, 762]
+mobilebanking54 = [12, 12, 14, 13, 14, 15, 16, 17, 19, 17, 17, 20]
+internetbanking55 = [959, 1058, 1184, 1046, 1260, 1239, 1253, 1278, 1177, 1233, 1190, 1233]
+mobilebanking55 = [24, 27, 31, 29, 34, 35, 38, 40, 41, 46, 47, 49]
+internetbanking56 = [551, 549, 674, 672, 666, 669, 668, 636, 683, 666, 708, 749]
+mobilebanking56 = [51, 49, 56, 53, 59, 59, 62, 66, 68, 75, 75, 79]
+internetbanking57 = [1816, 1633, 1861, 1682, 1674, 1643, 1732, 1578, 1705, 1732, 1586, 1750]
+mobilebanking57 = [84, 87, 102, 95, 105, 107, 108, 118, 129, 136, 139, 156]
+
+data_matrix = [['Types', 'Year', 'YearIncome'],
+               ['InternetBanking', 2010, sum(internetbanking53)],
+               ['MobileBanking', 2010, sum(mobilebanking53)],
+               ['InternetBanking', 2011, sum(internetbanking54)],
+               ['MobileBanking', 2011, sum(mobilebanking54)],
+               ['InternetBanking', 2012, sum(internetbanking55)],
+               ['MobileBanking', 2012, sum(mobilebanking55)],
+               ['InternetBanking', 2013, sum(internetbanking56)],
+               ['MobileBanking', 2013, sum(mobilebanking56)],
+               ['InternetBanking', 2014, sum(internetbanking57)],
+               ['MobileBanking', 2014, sum(mobilebanking57)]]
+
+colorscale = [[0, '#3D59AB'],[.5, '#C6E2FF'],[1, '#ffffff']]
+figure = FF.create_table(data_matrix, height_constant=60, colorscale = colorscale)
+
+types = ["internet&mobilebanking53", "internet&mobilebanking54", "internet&mobilebanking55",\
+         "internet&mobilebanking56", "internet&mobilebanking57"]
+internet_bank = [sum(internetbanking53), sum(internetbanking54), sum(internetbanking55), sum(internetbanking56), \
+                 sum(internetbanking57)]
+mobile_bank = [sum(mobilebanking53), sum(mobilebanking54), sum(mobilebanking55), sum(mobilebanking56), \
+                 sum(mobilebanking57)]
+
+trace1 = go.Scatter(x=types, y=internet_bank,
+                    marker=dict(color='#0099ff'),
+                    name='Goals For<br>Per Game',
+                    xaxis='x2', yaxis='y2')
+
+trace2 = go.Scatter(x=types, y=mobile_bank,
+                    marker=dict(color='#404040'),
+                    name='Goals Against<br>Per Game',
+                    xaxis='x2', yaxis='y2')
+
+figure['data'].extend([trace1, trace2])
+figure.layout.margin.update({'t':50, 'b':100})
+figure.layout.xaxis.update({'domain': [0, .5]})
+figure.layout.xaxis2.update({'domain': [0.6, 1.]})
+figure.layout.update({'title': 'Banking Statement value comparison'})
+figure.layout.yaxis2.update({'anchor': 'x2'})
+figure.layout.yaxis2.update({'title': 'Values'})
+py.iplot(figure, filename='test_table')
