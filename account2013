@@ -1,0 +1,33 @@
+import plotly.plotly as py
+import plotly.graph_objs as go
+
+month = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+         'August', 'September', 'October', 'November', 'December']
+internetbanking = [6731388, 6810097, 6918054, 7000598, 7103699, 7198890, 7314115, 7625829, 7707712, 7830643, 7944717, 8033061]
+mobilebanking = [888011, 925386, 964860, 969977, 1002013, 1025827, 1055023, 1088971, 1109530, 1133019, 1151152, 1164796]
+
+trace0 = go.Scatter(
+    x = month,
+    y = internetbanking,
+    name = 'internetbanking',
+    line = dict(
+        color = ('rgb(205, 12, 24)'),
+        width = 4)
+)
+trace1 = go.Scatter(
+    x = month,
+    y = mobilebanking,
+    name = 'mobilebanking',
+    line = dict(
+        color = ('rgb(22, 96, 167)'),
+        width = 4,)
+)
+
+data = [trace0, trace1]
+
+layout = dict(title = 'difference between internetbanking and mobile banking accounts in 2013',
+              yaxis = dict(title = 'number of accounts'),
+              )
+
+fig = dict(data=data, layout=layout)
+py.iplot(fig, filename='account2013')
